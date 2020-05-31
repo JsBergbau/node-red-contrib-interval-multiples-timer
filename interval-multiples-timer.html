@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('interval-multiples-timer',{
+        category: 'input',
+        color: '#a6bbcf',
+        defaults: {
+            interval: {value:5000},
+            payload: {value: ""},
+            name: {value:""}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "timer.png",
+        label: function() {
+            return this.name||"interval-multiples-timer";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="interval-multiples-timer">
+    <div class="form-row">
+        <label for="node-input-interval"><i class="icon-repeat"></i> Interval [ms]</label>
+        <input type="number" id="node-input-interval">
+    </div>
+    <div class="form-row">
+        <label for="node-input-payload"><i class="icon-envelope"></i> Payload (defaults to current timestamp)</label>
+        <input type="text" id="node-input-payload" placeholder="Payload">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="interval-multiples-timer">
+    <p>A interval timer that fires at multiples of the given interval, measured from Jan 1 1970</p>
+</script>

@@ -6,7 +6,10 @@ module.exports = function(RED) {
         var timer;
 
         var timeHandler = function() {
-            node.send({payload: config.payload || Date.now()});
+            msg = {};
+            msg.topic = config.topic;
+            msg.payload = config.payload || Date.now();
+            node.send(msg);
             timer = setTimeout(timeHandler, interval - (Date.now() %interval));  // setInterval apparently has a considerable drift, so we use setTimeout to stay within the time grid as much as possible
         };
 

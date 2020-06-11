@@ -5,6 +5,7 @@
         defaults: {
             interval: {value:5000},
             payload: {value: ""},
+            topic: {value:""},
             name: {value:""}
         },
         inputs:0,
@@ -18,15 +19,19 @@
 
 <script type="text/x-red" data-template-name="interval-multiples-timer">
     <div class="form-row">
-        <label for="node-input-interval"><i class="icon-repeat"></i> Interval [ms]</label>
+        <label for="node-input-interval"><i class="fa fa-clock-o"></i> Interval [ms]</label>
         <input type="number" id="node-input-interval">
     </div>
     <div class="form-row">
-        <label for="node-input-payload"><i class="icon-envelope"></i> Payload (defaults to current timestamp)</label>
-        <input type="text" id="node-input-payload" placeholder="Payload">
+        <label for="node-input-payload"><i class="fa fa-envelope"></i> Payload</label>
+        <input type="text" id="node-input-payload" placeholder="default = current timestamp">
     </div>
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <label for="node-input-topic"><i class="fa fa-tasks"></i> Topic</label>
+        <input type="text" id="node-input-topic" placeholder="Topic">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>

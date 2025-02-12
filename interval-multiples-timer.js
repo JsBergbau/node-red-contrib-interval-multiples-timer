@@ -10,7 +10,15 @@ module.exports = function(RED) {
             msg.topic = config.topic;
             msg.payload = config.payload || Date.now();
             node.send(msg);
-            timer = setTimeout(timeHandler, interval - (Date.now() %interval));  // setInterval apparently has a considerable drift, so we use setTimeout to stay within the time grid as much as possible
+            
+            if (interval > 6) {
+                let now = Date.now();
+                let nextInterval = Math.ceil(now / interval) * interval;
+                timer = setTimeout(timeHandler, nextInterval - now);
+            } else {
+                //keep existing code 
+                timer = setTimeout(timeHandler, interval - (Date.now() % interval)); // setInterval apparently has a considerable drift, so we use setTimeout to stay within the time grid as much as possible
+            }
         };
 
         timer = setTimeout(timeHandler, interval - (Date.now() %interval));        
